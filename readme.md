@@ -19,7 +19,6 @@ The project is a static library so that you don't have to import the sources in 
 First open the **NYXImagesKit.xcodeproj** and build the library, then import the library and the headers in your project, and finally link with these frameworks :
 
 - **Accelerate**
-- **AssetsLibrary**
 - **ImageIO**
 - **MobileCoreServices**
 - **QuartzCore**
@@ -126,7 +125,7 @@ This category allows you to save an *UIImage* at a specified path or file URL or
 4. PNG
 5. TIFF
 
-To use it, you must link with **ImageIO.framework**, **MobileCoreServices.framework** and **AssetsLibrary.framework**.
+To use it, you must link with **ImageIO.framework** and **MobileCoreServices.framework**.
 
 	[myImage saveToURL:url type:NYXImageTypeJPEG backgroundFillColor:nil];
 	[myImage saveToPath:path type:NYXImageTypeTIFF backgroundFillColor:[UIColor yellowColor]];

@@ -11,7 +11,6 @@
 #import "UIImage+Saving.h"
 #import <ImageIO/ImageIO.h> // For CGImageDestination
 #import <MobileCoreServices/MobileCoreServices.h> // For the UTI types constants
-#import <AssetsLibrary/AssetsLibrary.h> // For photos album saving
 
 
 @interface UIImage (NYX_Saving_private)
@@ -94,20 +93,6 @@
 
 	NSURL* url = [[NSURL alloc] initFileURLWithPath:path];
 	const BOOL ret = [self saveToURL:url type:NYXImageTypePNG backgroundFillColor:nil];
-	return ret;
-}
-
--(BOOL)saveToPhotosAlbum
-{
-	ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-	__block BOOL ret = YES;
-	[library writeImageToSavedPhotosAlbum:self.CGImage orientation:(ALAssetOrientation)self.imageOrientation completionBlock:^(NSURL* assetURL, NSError* error) {
-		if (!assetURL)
-		{
-			NSLog(@"%@", error);
-			ret = NO;
-		}
-	}];
 	return ret;
 }
 
